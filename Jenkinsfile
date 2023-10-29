@@ -4,7 +4,7 @@ pipeline{
   stages{
     stage("git checkout"){
         step{
-             git url:"https://github.com/Sufiyan779/Qt_k8s_29_0ct.git", branch:"master"
+             git url:"https://github.com/Sufiyan779/Qt_k8s_29_0ct.git", branch:"main"
         }
     }
     stage("creating cluster"){
