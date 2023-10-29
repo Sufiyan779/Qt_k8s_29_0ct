@@ -10,5 +10,5 @@ nodeGroups:
     desiredCapacity: 2
     instanceType: t2.micro
     ssh:
-      publicKeyPath: ~/.ssh/my-eks-cluster.pub
+      publicKeyPath: ~/.ssh/id_rsa.pub
 
