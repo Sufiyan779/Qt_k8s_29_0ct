@@ -14,7 +14,7 @@ pipeline{
     //          sh 'eksctl create cluster -f cluster.yaml'
     //     }
     // }
-     stage('Check and Create Folder') {
+     stage('Check and Create Folder'){
             steps {
                 script {
                     def folderName = 'abc'
@@ -27,8 +27,8 @@ pipeline{
                         echo "Folder $folderName does not exist. Creating..."
                         sh "mkdir $folderName"
                     }
-                }
-            }
-         }
+                }
+            }
+        }
     }
 }
