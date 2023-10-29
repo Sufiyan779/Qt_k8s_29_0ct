@@ -1,9 +1,8 @@
 pipeline{
     agent { label "eksctl"}
-    triggers{
-        pollSCM("* * * * *")
+      triggers {
+        pollSCM('* * * * *') // Poll SCM every minute (use your desired cron schedule)
     }
-
   stages{
     // stage("git checkout"){
     //     steps{
@@ -15,22 +14,23 @@ pipeline{
     //          sh 'eksctl create cluster -f cluster.yaml'
     //     }
     // }
-        stage("when condition"){
-            steps{
-                script{
-                def folder="abc"
-                def folderstatus= fileExists(folder)
+     stage('Check and Create Folder') {
+            steps {
+                script {
+                    def folderName = 'abc'
+                    def folderExists = fileExists(folderName)
 
-                if (folderstatus){
-                    echo "${folder}: already folder exist"
-                }
-                else{
-                    echo "${folder}: Does not exist"
-                    sh "mkdir /home/ubuntu/${folder}"
-                }
-                }
-            }
+                    if (folderExists) {
+                        echo "Folder $folderName already exists"
+                    }
+                    else {
+                        echo "Folder $folderName does not exist. Creating..."
+                        sh "mkdir $folderName"
+                    }
+                }
+            }
 
     }
-  }  
-}
+  }
+   
+   }
