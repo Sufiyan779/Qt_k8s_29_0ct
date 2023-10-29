@@ -17,6 +17,7 @@ pipeline{
     // }
         stage("when condition"){
             steps{
+                script{
                 def folder="abc"
                 def folderstatus= sh(script: "ls /home/ubuntu | grep ${folder}, returnStatus: true")
 
@@ -26,6 +27,7 @@ pipeline{
                 else{
                     echo "${folder}: Does not exist"
                     sh "mkdir /home/ubuntu/${folder}"
+                }
                 }
             }
 
