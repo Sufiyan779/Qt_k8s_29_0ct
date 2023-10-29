@@ -19,9 +19,9 @@ pipeline{
             steps{
                 script{
                 def folder="abc"
-                def folderstatus= sh(script: "ls /home/ubuntu | grep ${folder}, returnStatus: true")
+                def folderstatus= fileExists(folder)
 
-                if (folderstatus==0){
+                if (folderstatus){
                     echo "${folder}: already folder exist"
                 }
                 else{
